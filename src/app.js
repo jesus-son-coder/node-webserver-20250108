@@ -48,7 +48,7 @@ app.get('/weather', (req, res) => {
             })
         }
 
-        forecast(latitude, longitude, (error, forecastData) => {
+        forecast(latitude, longitude, (error, forecastData, weatherIcon) => {
             if(error) {
                 return res.send({
                     error: 'Unable to find weather...Try another search'
@@ -57,7 +57,8 @@ app.get('/weather', (req, res) => {
             res.send({
                 address: req.query.address,
                 location: location,
-                forecast: forecastData
+                forecast: forecastData,
+                picture: weatherIcon
             });
         })
     })
